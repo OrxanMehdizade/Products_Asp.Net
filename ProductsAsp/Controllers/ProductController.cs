@@ -28,5 +28,26 @@ namespace ProductsAsp.Controllers
             var product=products.FirstOrDefault(p=>p.Id==id);
             return View(product);
         }
+
+        [HttpGet]
+        public IActionResult AddProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddProduct(Product model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            products.Add(model);
+
+            return RedirectToAction("GetAll");
+        }
+
+
     }
 }
