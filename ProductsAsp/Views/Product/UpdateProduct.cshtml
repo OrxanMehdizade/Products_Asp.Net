@@ -1,8 +1,7 @@
 ﻿@model Product
 
-
 <style>
-    .form-add-main {
+    .form-main {
         text-align: center;
         margin: 0 auto;
         width: 450px;
@@ -14,7 +13,9 @@
     .form-group {
         margin-bottom: 20px;
         margin: 50px auto;
-        padding: 10px;
+        padding:10px;
+
+
     }
 
     .btn-primary {
@@ -23,18 +24,25 @@
     }
 
     .form-control {
-        margin-bottom: 10px;
+        margin-bottom:10px;
         border: 2px solid #007bff;
     }
 
-    .btnStyle {
-        display: flex;
-        flex-wrap: wrap;
+
+    #extId{
+        width:80px;
+    }
+
+    .btnStyle{
+        display:flex;
+        flex-wrap:wrap;
     }
 
 </style>
 
-<form asp-controller="Product" asp-action="AddProduct" method="post" class="form-add-main">
+
+<form asp-controller="Product" asp-action="UpdateProduct" method="post" class="form-main">
+
     <div class="form-group">
         <input asp-for="ProductName" placeholder="Product Name..." class="form-control" />
         <span asp-validation-for="ProductName" class="text-danger"></span>
@@ -43,8 +51,9 @@
         <input asp-for="Price" placeholder="Price..." class="form-control" />
         <span asp-validation-for="Price" class="text-danger"></span>
         <div class="btnStyle">
-            <button type="submit" class="btn btn-primary">Add</button>
-            <a class="btn btn-primary" asp-area="" asp-controller="Product" asp-action="GetAll">Exit</a>
+            <a class="btn btn-primary" id="extId" asp-area="" asp-controller="Product" asp-action="GetAll">Exit</a>
+            <button type="submit" class="btn btn-primary">Update</button>
         </div>
+
     </div>
 </form>

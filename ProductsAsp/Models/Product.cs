@@ -1,5 +1,9 @@
-﻿namespace ProductsAsp.Models
+﻿using Microsoft.AspNetCore.Mvc;
+using ProductsAsp.Models.FluentValidators;
+
+namespace ProductsAsp.Models
 {
+    [ModelMetadataType(typeof(ProductFluentValidator))]
     public class Product
     {
         static int _staticId = 0;

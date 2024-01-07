@@ -47,7 +47,49 @@ namespace ProductsAsp.Controllers
 
             return RedirectToAction("GetAll");
         }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var product = products.FirstOrDefault(x => x.Id == id);
 
+            if(product != null) { 
+                products.Remove(product);
+            }
+            return RedirectToAction("GetAll");
+        }
+
+        [HttpGet]
+        public IActionResult UpdateProduct(int id)
+        {
+            var product = products.FirstOrDefault(p => p.Id == id);
+
+            if (product == null)
+            {
+                return RedirectToAction("GetAll");
+            }
+
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateProduct(int id, Product model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var product = products.FirstOrDefault(p => p.Id == id);
+
+            if (product != null)
+            {
+                product.ProductName = model.ProductName;
+                product.Description = model.Description;
+                product.Price = model.Price;
+            }
+
+            return RedirectToAction("GetAll");
+        }
 
     }
 }
