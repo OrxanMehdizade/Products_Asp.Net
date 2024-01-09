@@ -1,10 +1,51 @@
 ﻿@model Product
 
+
+
+<style>
+    .Get-Main-div {
+        text-align: center;
+        margin: 50px auto;
+        width: 450px;
+        border: 5px solid #007bff;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+        background:black;
+    }
+
+    .Get-Main-div p{
+        margin-top:10px;
+        font-size:20px;
+ 
+
+        color: #007bff;
+    }
+
+    .Get-Main-div p span{
+        margin-left: 15px;
+        color:white;
+    }
+
+    span{
+        color:white;
+    }
+    #extId {
+        width: 80px;
+        margin: 20px;
+    }
+
+
+</style>
+
+
 @if(Model is not null){
-    <div>
-        <p>Product Name: @Model.ProductName</p>
-        <p>Description: @Model.Description</p>
-        <p>Price: @Model.Price</p>
-        <a class="btn btn-primary" asp-area="" asp-controller="Product" asp-action="GetAll">Exit</a>
+    <div class="Get-Main-div">
+        <p>Product Name: <span>@Model.ProductName</span> </p>
+        <span>-------------------------------------------</span>
+        <p>Description: <span>@Model.Description</span></p>
+        <span>-------------------------------------------</span>
+        <p>Price: <span>@Model.Price</span></p>
+        <span>-------------------------------------------</span><br/>
+        <a class="btn btn-primary" id="extId" asp-area="" asp-controller="Product" asp-action="GetAll">Exit</a>
     </div>
 }
